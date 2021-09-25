@@ -45,8 +45,6 @@ let debug = false;
 let targetProperty;
 let searchString;
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
 function setup(app, options) {
     return app.setup(options)
     // We need to set up the authentication for NetStorage
