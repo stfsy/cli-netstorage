@@ -516,8 +516,10 @@ class NetStorage {
     makeRequest(request) {
         return new Promise ((resolve, reject) => {
             this._nsClient.auth(request)
-            this._nsClient.send((data, response) => {
-                if (response.statusCode != 200) {
+            this._nsClient.send((error, response) => {
+                if (error) {
+                    reject("Unable to complete action. Error: " + JSON.stringify(error, null, 1))
+                } else if (response.statusCode != 200) {
                     reject("Unable to complete action.  Status code " + response.statusCode)
                 } else {
                     resolve(response)
@@ -528,9 +530,3 @@ class NetStorage {
 
 }
 module.exports = NetStorage;
-/*
-Id (Key-name): kirsten
-Key: NUq2a5N8C14uWCs8k3aq7l003J40ymIS7s45v5Jn9LHhl5QRIz
-Storage group name: kirsten
-Connection Hostname: kirsten-nsu.akamaihd.net
-*/
