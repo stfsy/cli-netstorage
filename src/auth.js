@@ -32,7 +32,7 @@ function makeAuthData(request, key, id, group, timestamp, nonce) {
 }
 
 function makeURL(host, path, queryStringObj) {
-  var parsed = url.parse("http://" + host + path, true);
+  var parsed = url.parse("https://" + host + path, true);
   if (queryStringObj) parsed.query = queryStringObj;
   return url.format( parsed);
 }
